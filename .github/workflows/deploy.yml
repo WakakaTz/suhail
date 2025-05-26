@@ -27,22 +27,10 @@ jobs:
       run: npm install
 
     - name: Start Suhail-Md
-        run:|
-          echo "Running Queen Anju bot in auto-restart mode..."
-          timeout 18000 bash -c 'while true; do node queen.js || echo "Bot crashed, restarting..."; sleep 2; done'
-
-    - name: Re-Trigger Workflow
-      if: always()
-        run:|
-          echo "Re-running workflow..."
-          curl -X POST \
-          -H "Authorization:Bearer ${{ secrets.PAT_TOKEN }}" \
-          -H "Accept:application/vnd.github.v3+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/loop-runner.yml/dispatches \
-            -d '{"ref":"main"}'
+        
       env:
           OWNER_NAME: Mr. Kalulu 
           OWNER_NUMBER: 255626753818
-          SESSION_ID: "123"
+          SESSION_ID: "3"
 
       run: npm start
